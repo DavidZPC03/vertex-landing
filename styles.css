@@ -650,17 +650,17 @@ svg {
 
 .grid--metrics {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr; /* móvil: un pilar por fila */
 }
 
 .metric {
-  padding: 44px 24px;
+  padding: 36px 24px;
   text-align: center;
-  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 .metric:first-child {
-  border-left: 0;
+  border-top: 0;
 }
 
 .metric__value {
@@ -1195,6 +1195,17 @@ svg {
 
   .grid--metrics {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* En fila, el divisor pasa de arriba a la izquierda */
+  .metric {
+    padding: 44px 24px;
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+
+  .metric:first-child {
+    border-left: 0;
   }
 
   .footer__row {
