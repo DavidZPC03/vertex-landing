@@ -1012,6 +1012,16 @@ svg {
   transition: background 0.4s ease, border-color 0.4s ease;
 }
 
+/* Campo honeypot (trampa para bots): siempre oculto */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .field {
   display: grid;
   gap: 8px;
