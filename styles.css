@@ -849,6 +849,35 @@ svg {
   font-size: 0.95rem;
 }
 
+/* Ejemplos y beneficios concretos dentro de cada tarjeta de servicio */
+.card__list {
+  position: relative;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 10px;
+}
+
+.card__list li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
 /* ---------- Pasos del proceso ---------- */
 .step__number {
   position: relative;
@@ -1215,10 +1244,6 @@ svg {
 }
 
 @media (min-width: 900px) {
-  .grid--services {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   .grid--steps {
     grid-template-columns: repeat(3, 1fr);
   }
