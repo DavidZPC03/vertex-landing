@@ -225,9 +225,21 @@ function applyLang(lang) {
     if (value != null) el.placeholder = value;
   });
 
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+    const value = dict[el.dataset.i18nAlt];
+    if (value != null) el.alt = value;
+  });
+
   document.documentElement.lang = lang === "es" ? "es-MX" : "en";
-  document.title = dict["meta.title"];
-  if (metaDesc) metaDesc.setAttribute("content", dict["meta.desc"]);
+
+  // Cada página declara sus claves de título/descripción en <html data-title-key/data-desc-key>;
+  // si no las declara, se usan las de la landing.
+  const titleKey = document.documentElement.dataset.titleKey || "meta.title";
+  const descKey = document.documentElement.dataset.descKey || "meta.desc";
+  document.title = dict[titleKey] ?? dict["meta.title"];
+  if (metaDesc) {
+    metaDesc.setAttribute("content", dict[descKey] ?? dict["meta.desc"]);
+  }
 
   // El botón muestra el idioma al que se puede cambiar
   langToggle.textContent = lang === "es" ? "EN" : "ES";
