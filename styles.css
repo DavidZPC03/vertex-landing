@@ -1409,3 +1409,614 @@ svg {
     transition: none;
   }
 }
+
+/* ============================================================
+   Páginas de proyectos (/proyectos y casos)
+   Reutiliza los tokens y las clases base (.section, .card,
+   .card__list, .reveal, .title-reveal) definidos arriba.
+   ============================================================ */
+
+/* ---------- Enlace activo en la navegación ---------- */
+.nav__links a.is-active {
+  color: var(--text);
+}
+
+.nav__links a.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav__mobile a.is-active:not(.btn) {
+  color: var(--text);
+}
+
+/* ---------- Encabezado de página de proyecto ----------
+   Compensa la nav fija: la primera sección necesita aire arriba */
+.section--case-head {
+  padding-top: 148px;
+}
+
+/* ---------- Migas de pan ---------- */
+.crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.crumb a {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.crumb a:hover {
+  color: var(--text);
+}
+
+.crumb__sep {
+  color: var(--faint);
+}
+
+.crumb__current {
+  color: var(--text);
+}
+
+/* ---------- Título y resumen del caso ---------- */
+.case__title {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.case__summary {
+  margin-top: 20px;
+  max-width: 58ch;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+/* ---------- Ficha de metadatos ---------- */
+.pmeta {
+  display: grid;
+  gap: 1px;
+  margin-top: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--border);
+  overflow: hidden;
+}
+
+.pmeta__item {
+  padding: 20px 22px;
+  background: var(--bg-card);
+}
+
+.pmeta__k {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pmeta__v {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---------- Bloques de contenido del caso ----------
+   La prosa se acota para que la línea sea cómoda de leer; los bloques
+   de datos (resultados, stack, navegación) ocupan todo el ancho del
+   contenedor para alinear con la ficha de metadatos */
+.case-body {
+  max-width: 100%;
+}
+
+.pblock + .pblock {
+  margin-top: 56px;
+}
+
+.pblock__title {
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pblock__text {
+  margin-top: 16px;
+  max-width: 68ch;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* La lista reutiliza .card__list; aquí solo se agranda un poco */
+.pblock__list {
+  max-width: 68ch;
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 20px;
+  gap: 14px;
+}
+
+.pblock__list li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* ---------- Resultados medidos ---------- */
+.presults {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.presult {
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+.presult__h {
+  position: relative;
+  padding-left: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.presult__h::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+.presult__p {
+  margin-top: 10px;
+  padding-left: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ---------- Chips de stack ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.chip {
+  padding: 6px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.chips--sm {
+  margin-top: 16px;
+  gap: 6px;
+}
+
+.chips--sm .chip {
+  padding: 4px 10px;
+  font-size: 0.72rem;
+}
+
+/* ---------- Capturas del proyecto (pendientes) ---------- */
+.pshots {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.pshot img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.pshot figcaption {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+/* ---------- Navegación entre casos ---------- */
+.pnav {
+  display: grid;
+  gap: 12px;
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.pnav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.pnav__link:hover {
+  border-color: var(--faint);
+  transform: translateY(-2px);
+}
+
+.pnav__link--next {
+  text-align: right;
+}
+
+.pnav__dir {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pnav__name {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- Listado de proyectos ---------- */
+.grid--projects {
+  grid-template-columns: 1fr;
+}
+
+.pcard {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Alto reservado para dos renglones: mantiene los títulos alineados
+   aunque una etiqueta sea más larga que las demás */
+.pcard__tag {
+  min-height: 2.4em;
+  margin-bottom: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* margin-top: auto empuja el enlace al pie, así los tres quedan a la misma altura */
+.pcard__link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pcard__link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.pcard:hover .pcard__link svg {
+  transform: translateX(4px);
+}
+
+/* Toda la tarjeta es clicable: el enlace se extiende sobre ella */
+.pcard__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+/* Nota de confidencialidad al pie del listado */
+.pnote {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* ---------- CTA de las páginas de proyecto ---------- */
+.case-cta {
+  position: relative;
+  max-width: 620px;
+}
+
+.case-cta__btn {
+  margin-top: 28px;
+}
+
+/* ---------- Adaptaciones por ancho ---------- */
+@media (min-width: 640px) {
+  .pmeta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .presults {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pnav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid--projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pmeta {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================================
+   FIGURAS DE LOS CASOS (diagramas SVG)
+   Son ilustraciones explicativas, no capturas del producto.
+   Todo el color sale de los tokens de tema para que se lean
+   igual en claro y en oscuro: nada de hex dentro del SVG.
+   ============================================================ */
+.pfig {
+  margin-top: 32px;
+}
+
+.pblock__title + .pfig,
+.pblock__text + .pfig {
+  margin-top: 28px;
+}
+
+/* Ancho acotado: a mayor ancho el texto del SVG se agranda,
+   pero pasado cierto punto el diagrama queda desangelado */
+.pfig__svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  font-family: var(--font);
+}
+
+.pfig__cap {
+  max-width: 68ch;
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* Par antes/después: se apilan en móvil y conviven en escritorio */
+.pfig--pair {
+  display: grid;
+  gap: 28px;
+}
+
+.pfig--pair .pfig__cap {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+
+.pfig__label {
+  margin-bottom: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Primitivas de los diagramas ---------- */
+.pfig-box {
+  fill: var(--bg-card);
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.pfig-box--accent {
+  stroke: var(--accent);
+  fill: var(--accent-soft);
+}
+
+.pfig-glass {
+  fill: var(--chip-bg);
+  stroke: var(--faint);
+  stroke-width: 1;
+}
+
+/* Línea de llamada: une el número con la zona sin taparla */
+.pfig-lead {
+  stroke: var(--faint);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.pfig-wheel {
+  fill: var(--chip-bg);
+  stroke: var(--faint);
+  stroke-width: 1.4;
+}
+
+.pfig-line {
+  stroke: var(--faint);
+  stroke-width: 1.3;
+  fill: none;
+}
+
+.pfig-line--accent {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.pfig-line--dash {
+  stroke: var(--faint);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+}
+
+/* Frontera entre inquilinos: tiene que verse, es el mensaje de la figura */
+.pfig-sep {
+  stroke: var(--faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 5;
+}
+
+.pfig-rule {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+/* Texto: 13px sobre un viewBox de 420 sigue siendo legible
+   cuando la figura baja a ~340px de ancho en móvil */
+.pfig-t {
+  fill: var(--text);
+  font-size: 13px;
+}
+
+.pfig-t--strong {
+  font-weight: 600;
+}
+
+.pfig-note {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+}
+
+.pfig-note--warn {
+  fill: var(--accent);
+}
+
+.pfig-note--ok {
+  fill: var(--text);
+  font-weight: 600;
+}
+
+/* Numeradores de paso y de zona */
+.pfig-num {
+  fill: var(--chip-bg);
+  stroke: var(--border);
+  stroke-width: 1.2;
+}
+
+.pfig-num--accent {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+}
+
+.pfig-numt {
+  fill: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pfig-numt--sm {
+  font-size: 10px;
+}
+
+/* Estados del indicador de conexión: cada uno con forma propia,
+   no solo color, para no depender de la percepción cromática */
+.pfig-dot--on {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.pfig-dot--wait {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.pfig-dot--nofix {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 3 2.6;
+}
+
+.pfig-dot--off {
+  fill: none;
+  stroke: var(--faint);
+  stroke-width: 2;
+}
+
+/* Barras comparativas del intervalo GPS */
+.pfig-bar--before {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.pfig-bar--after {
+  fill: var(--accent);
+}
+
+@media (min-width: 760px) {
+  .pfig--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 28px;
+  }
+}
+
+/* ============================================================
+   CAPTURAS DEL SISTEMA REAL
+   Imágenes tomadas de los sistemas en operación, no mockups.
+   ============================================================ */
+.pshots {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.pshot {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+.pshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pshot__cap {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}

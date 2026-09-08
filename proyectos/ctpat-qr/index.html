@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-theme="dark" data-title-key="c.metaTitle" data-desc-key="c.metaDesc">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica el tema guardado antes de pintar (evita parpadeo) -->
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem("vc-theme") || "dark";
+  </script>
+
+  <!-- SEO básico -->
+  <title>CTPAT-QR — Inspecciones con trazabilidad | Vertex Core</title>
+  <meta name="description" id="metaDesc" content="Caso CTPAT-QR: plataforma de inspecciones CTPAT con códigos QR, visor 3D del camión y registro en contrato inteligente. Proyecto desarrollado para la competencia InnovaTec." />
+  <link rel="canonical" href="https://vertex-core.net/proyectos/ctpat-qr/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://vertex-core.net/proyectos/ctpat-qr/" />
+  <meta property="og:title" content="CTPAT-QR — Inspecciones con trazabilidad | Vertex Core" />
+  <meta property="og:description" content="Caso CTPAT-QR: plataforma de inspecciones CTPAT con códigos QR, visor 3D del camión y registro en contrato inteligente. Proyecto desarrollado para la competencia InnovaTec." />
+  <meta property="og:image" content="https://vertex-core.net/og-image.png" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CTPAT-QR — Inspecciones con trazabilidad | Vertex Core" />
+  <meta name="twitter:description" content="Caso CTPAT-QR: plataforma de inspecciones CTPAT con códigos QR, visor 3D del camión y registro en contrato inteligente. Proyecto desarrollado para la competencia InnovaTec." />
+  <meta name="twitter:image" content="https://vertex-core.net/og-image.png" />
+
+  <!-- Migas de pan para buscadores (schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://vertex-core.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Proyectos",
+        "item": "https://vertex-core.net/proyectos/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "CTPAT-QR"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon: logo de Vertex Core -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Tipografía: Inter desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- Velo superior: desvanece (blur progresivo) el contenido que pasa bajo la nav -->
+  <div class="nav-fade" id="navFade" aria-hidden="true"></div>
+
+  <!-- ============ NAVEGACIÓN FLOTANTE ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Vertex Core — inicio">
+        <img src="/logo-128.png" alt="" class="nav__logo-mark" width="30" height="30" />
+        <span class="nav__logo-text">Vertex Core</span>
+      </a>
+
+      <div class="nav__right">
+        <nav class="nav__links" aria-label="Navegación principal">
+          <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+          <a href="/proyectos/" class="is-active" aria-current="page" data-i18n="nav.projects">Proyectos</a>
+          <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+          <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+          <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+        </nav>
+
+        <!-- Toggle de idioma -->
+        <button class="icon-btn icon-btn--lang" id="langToggle" aria-label="Switch to English">EN</button>
+
+        <!-- Toggle de tema claro/oscuro -->
+        <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        </button>
+
+        <a href="/#contacto" class="btn btn--primary btn--sm nav__cta" data-i18n="nav.cta">Agendar una reunión</a>
+      </div>
+
+      <!-- Botón menú móvil -->
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div class="nav__mobile" id="navMobile">
+      <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="/proyectos/" class="is-active" aria-current="page" data-i18n="nav.projects">Proyectos</a>
+      <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+      <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+      <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+      <a href="/#contacto" class="btn btn--primary" data-i18n="nav.cta">Agendar una reunión</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ ENCABEZADO DEL CASO ============ -->
+    <section class="section section--case-head">
+      <div class="container">
+        <nav class="crumb" aria-label="Ruta de navegación">
+          <a href="/" data-i18n="bc.home">Inicio</a>
+          <span class="crumb__sep" aria-hidden="true">›</span>
+          <a href="/proyectos/" data-i18n="bc.projects">Proyectos</a>
+          <span class="crumb__sep" aria-hidden="true">›</span>
+          <span class="crumb__current" data-i18n="c.name">CTPAT-QR</span>
+        </nav>
+
+        <p class="section__label" data-i18n="c.tag">Proyecto de competencia · InnovaTec</p>
+        <h1 class="case__title title-reveal">
+          <span class="line"><span class="line__inner line__inner--scroll" data-i18n="c.name">CTPAT-QR</span></span>
+        </h1>
+        <p class="case__summary reveal" data-i18n="c.summary">Plataforma de inspecciones CTPAT con códigos QR, visor 3D del camión y registro no alterable de cada revisión.</p>
+
+        <dl class="pmeta reveal">
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mClient">Cliente</dt>
+            <dd class="pmeta__v" data-i18n="c.vClient">Equipos de alumnos de InnovaTec clasificados a etapa regional y nacional. No es un cliente de pago.</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mType">Tipo</dt>
+            <dd class="pmeta__v" data-i18n="c.vType">Plataforma web de inspecciones</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mStatus">Estado</dt>
+            <dd class="pmeta__v" data-i18n="c.vStatus">Proyecto de competencia</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mRole">Rol de Vertex</dt>
+            <dd class="pmeta__v" data-i18n="c.vRole">Desarrollo de la plataforma</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CUERPO DEL CASO ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="case-body">
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.challengeT">El reto</h2>
+          <p class="pblock__text" data-i18n="c.challengeP">La verificación de inspecciones CTPAT se llevaba en papel. No había trazabilidad ni forma de auditar quién revisó qué zona del camión, ni cuándo. Un registro en papel se puede rehacer, y eso es justamente lo que un esquema de seguridad no debe permitir.</p>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.builtT">Qué construimos</h2>
+          <ul class="card__list pblock__list">
+          <li data-i18n="c.b1">Gestión de inspecciones mediante códigos QR, cada uno ligado a la unidad y a la revisión correspondiente.</li>
+          <li data-i18n="c.b2">Módulo de personal con credencial con foto, para saber quién realizó cada inspección.</li>
+          <li data-i18n="c.b3">Visor 3D del camión que marca las zonas de inspección definidas por CTPAT.</li>
+          <li data-i18n="c.b4">Registro de cada inspección en un contrato inteligente, de modo que el historial no se pueda alterar después.</li>
+          <li data-i18n="c.b5">Cobros con Stripe y endurecimiento de seguridad del backend: lista blanca de orígenes y autenticación.</li>
+          </ul>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.scopeT">Alcance técnico</h2>
+          <p class="pblock__text" data-i18n="c.scopeP">Frontend en Next.js, API REST en Node.js con Express y base de datos PostgreSQL. Los pagos se procesan con Stripe. El contrato se desarrolló con Hardhat y se desplegó en la red de pruebas Sepolia.</p>
+
+          <!-- Figura 1: flujo de una inspección, del escaneo al asiento en contrato -->
+          <figure class="pfig">
+            <svg class="pfig__svg pfig__svg--flow" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="c1-t">
+              <title id="c1-t" data-i18n="c.fig1Alt">Flujo de una inspección: escaneo del QR, revisión por zonas, sello de tiempo y asiento en contrato inteligente</title>
+
+              <rect x="16" y="8" width="388" height="52" rx="10" class="pfig-box" />
+              <circle cx="44" cy="34" r="14" class="pfig-num" />
+              <text x="44" y="39" class="pfig-numt" text-anchor="middle">1</text>
+              <text x="72" y="30" class="pfig-t pfig-t--strong" data-i18n="c.fig1s1">Escaneo del QR</text>
+              <text x="72" y="48" class="pfig-note" data-i18n="c.fig1s1d">Identifica la unidad y la revisión</text>
+
+              <line x1="210" y1="60" x2="210" y2="84" class="pfig-line pfig-line--accent" />
+
+              <rect x="16" y="84" width="388" height="52" rx="10" class="pfig-box" />
+              <circle cx="44" cy="110" r="14" class="pfig-num" />
+              <text x="44" y="115" class="pfig-numt" text-anchor="middle">2</text>
+              <text x="72" y="106" class="pfig-t pfig-t--strong" data-i18n="c.fig1s2">Inspección por zonas</text>
+              <text x="72" y="124" class="pfig-note" data-i18n="c.fig1s2d">Se registra cada zona del camión</text>
+
+              <line x1="210" y1="136" x2="210" y2="160" class="pfig-line pfig-line--accent" />
+
+              <rect x="16" y="160" width="388" height="52" rx="10" class="pfig-box" />
+              <circle cx="44" cy="186" r="14" class="pfig-num" />
+              <text x="44" y="191" class="pfig-numt" text-anchor="middle">3</text>
+              <text x="72" y="182" class="pfig-t pfig-t--strong" data-i18n="c.fig1s3">Sello de tiempo y responsable</text>
+              <text x="72" y="200" class="pfig-note" data-i18n="c.fig1s3d">Queda quién revisó y cuándo</text>
+
+              <line x1="210" y1="212" x2="210" y2="236" class="pfig-line pfig-line--accent" />
+
+              <rect x="16" y="236" width="388" height="52" rx="10" class="pfig-box pfig-box--accent" />
+              <circle cx="44" cy="262" r="14" class="pfig-num pfig-num--accent" />
+              <text x="44" y="267" class="pfig-numt" text-anchor="middle">4</text>
+              <text x="72" y="258" class="pfig-t pfig-t--strong" data-i18n="c.fig1s4">Asiento en contrato inteligente</text>
+              <text x="72" y="276" class="pfig-note" data-i18n="c.fig1s4d">El historial ya no se puede alterar</text>
+            </svg>
+            <figcaption class="pfig__cap" data-i18n="c.fig1Cap">Cada inspección queda ligada a una unidad, a una persona y a un momento. El último paso la asienta en un contrato, que es lo que impide rehacer un registro después de los hechos.</figcaption>
+          </figure>
+
+          <!-- Figura 2: esquema de las zonas de revisión sobre la unidad -->
+          <figure class="pfig">
+            <svg class="pfig__svg pfig__svg--truck" viewBox="0 0 420 310" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="c2-t">
+              <title id="c2-t" data-i18n="c.fig2Alt">Esquema lateral de un tractocamión con las zonas de revisión numeradas</title>
+
+              <!-- Silueta: cofre, cabina y remolque -->
+              <rect x="22" y="110" width="26" height="28" rx="3" class="pfig-box" />
+              <rect x="48" y="82" width="52" height="56" rx="3" class="pfig-box" />
+              <rect x="54" y="88" width="22" height="16" rx="2" class="pfig-glass" />
+              <rect x="100" y="124" width="14" height="8" class="pfig-box" />
+              <rect x="114" y="64" width="282" height="74" rx="3" class="pfig-box" />
+
+              <!-- Llantas y piso -->
+              <circle cx="40" cy="150" r="14" class="pfig-wheel" />
+              <circle cx="112" cy="150" r="14" class="pfig-wheel" />
+              <circle cx="140" cy="150" r="14" class="pfig-wheel" />
+              <circle cx="330" cy="150" r="14" class="pfig-wheel" />
+              <circle cx="358" cy="150" r="14" class="pfig-wheel" />
+              <line x1="16" y1="166" x2="404" y2="166" class="pfig-rule" />
+
+              <!-- Llamadas por arriba -->
+              <line x1="34" y1="50" x2="34" y2="108" class="pfig-lead" />
+              <circle cx="34" cy="40" r="11" class="pfig-num pfig-num--accent" />
+              <text x="34" y="44" class="pfig-numt" text-anchor="middle">1</text>
+
+              <line x1="74" y1="50" x2="74" y2="80" class="pfig-lead" />
+              <circle cx="74" cy="40" r="11" class="pfig-num pfig-num--accent" />
+              <text x="74" y="44" class="pfig-numt" text-anchor="middle">4</text>
+
+              <line x1="250" y1="50" x2="250" y2="62" class="pfig-lead" />
+              <circle cx="250" cy="40" r="11" class="pfig-num pfig-num--accent" />
+              <text x="250" y="44" class="pfig-numt" text-anchor="middle">6</text>
+
+              <line x1="386" y1="50" x2="386" y2="62" class="pfig-lead" />
+              <circle cx="386" cy="40" r="11" class="pfig-num pfig-num--accent" />
+              <text x="386" y="44" class="pfig-numt" text-anchor="middle">7</text>
+
+              <!-- Llamadas por abajo -->
+              <line x1="70" y1="178" x2="70" y2="140" class="pfig-lead" />
+              <circle cx="70" cy="189" r="11" class="pfig-num pfig-num--accent" />
+              <text x="70" y="193" class="pfig-numt" text-anchor="middle">3</text>
+
+              <line x1="126" y1="178" x2="126" y2="136" class="pfig-lead" />
+              <circle cx="126" cy="189" r="11" class="pfig-num pfig-num--accent" />
+              <text x="126" y="193" class="pfig-numt" text-anchor="middle">5</text>
+
+              <line x1="344" y1="178" x2="344" y2="166" class="pfig-lead" />
+              <circle cx="344" cy="189" r="11" class="pfig-num pfig-num--accent" />
+              <text x="344" y="193" class="pfig-numt" text-anchor="middle">2</text>
+
+              <!-- Leyenda -->
+              <circle cx="24" cy="222" r="8" class="pfig-num" />
+              <text x="24" y="225" class="pfig-numt pfig-numt--sm" text-anchor="middle">1</text>
+              <text x="40" y="226" class="pfig-note" data-i18n="c.fig2z1">Defensa y motor</text>
+              <circle cx="24" cy="246" r="8" class="pfig-num" />
+              <text x="24" y="249" class="pfig-numt pfig-numt--sm" text-anchor="middle">2</text>
+              <text x="40" y="250" class="pfig-note" data-i18n="c.fig2z2">Llantas y ejes</text>
+              <circle cx="24" cy="270" r="8" class="pfig-num" />
+              <text x="24" y="273" class="pfig-numt pfig-numt--sm" text-anchor="middle">3</text>
+              <text x="40" y="274" class="pfig-note" data-i18n="c.fig2z3">Tanques de combustible</text>
+              <circle cx="24" cy="294" r="8" class="pfig-num" />
+              <text x="24" y="297" class="pfig-numt pfig-numt--sm" text-anchor="middle">4</text>
+              <text x="40" y="298" class="pfig-note" data-i18n="c.fig2z4">Cabina y compartimentos</text>
+
+              <circle cx="224" cy="222" r="8" class="pfig-num" />
+              <text x="224" y="225" class="pfig-numt pfig-numt--sm" text-anchor="middle">5</text>
+              <text x="240" y="226" class="pfig-note" data-i18n="c.fig2z5">Quinta rueda y bajos</text>
+              <circle cx="224" cy="246" r="8" class="pfig-num" />
+              <text x="224" y="249" class="pfig-numt pfig-numt--sm" text-anchor="middle">6</text>
+              <text x="240" y="250" class="pfig-note" data-i18n="c.fig2z6">Piso, paredes y techo</text>
+              <circle cx="224" cy="270" r="8" class="pfig-num" />
+              <text x="224" y="273" class="pfig-numt pfig-numt--sm" text-anchor="middle">7</text>
+              <text x="240" y="274" class="pfig-note" data-i18n="c.fig2z7">Puertas</text>
+            </svg>
+            <figcaption class="pfig__cap" data-i18n="c.fig2Cap">El visor 3D del sistema marca las zonas que hay que revisar sobre la unidad. Este esquema las representa de forma simplificada; el orden y el alcance de la revisión los define el programa de seguridad de cada empresa.</figcaption>
+          </figure>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.stackT">Stack técnico</h2>
+          <ul class="chips">
+            <li class="chip">TypeScript</li>
+            <li class="chip">Next.js</li>
+            <li class="chip">React</li>
+            <li class="chip">Node.js</li>
+            <li class="chip">Express</li>
+            <li class="chip">PostgreSQL</li>
+            <li class="chip">Stripe</li>
+            <li class="chip">Hardhat</li>
+            <li class="chip">Solidity</li>
+          </ul>
+        </div>
+
+        <!-- Captura del sistema real en su ambiente de QA (no es un mockup) -->
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.shotsT">El sistema en operación</h2>
+          <div class="pshots">
+            <figure class="pshot">
+              <img src="/proyectos/ctpat-qr/portal.webp" width="1600" height="1112"
+                   loading="lazy" decoding="async" alt="Portal de acceso de CTPAT-QR: formulario de inicio de sesión junto al resumen de auditoría inmutable, gestión multiusuario y checklists del estándar CTPAT." data-i18n-alt="c.shot1Alt" />
+              <figcaption class="pshot__cap" data-i18n="c.shot1Cap">Portal de acceso en el ambiente de QA, con el resumen de las tres capacidades del sistema: auditoría inmutable en la red Sepolia, gestión multiusuario de inspectores y checklists del estándar CTPAT.</figcaption>
+            </figure>
+            <figure class="pshot">
+              <img src="/proyectos/ctpat-qr/inspeccion-3d.webp" width="1400" height="684"
+                   loading="lazy" decoding="async" alt="Formulario de inspección CTPAT-QR con el visor 3D del tractocamión a un costado; la zona Frente aparece resaltada y los puntos se marcan como conformes o con anomalía." data-i18n-alt="c.shot2Alt" />
+              <figcaption class="pshot__cap" data-i18n="c.shot2Cap">Formulario de inspección con el visor 3D al costado: la zona que se está revisando se resalta sobre el modelo del tractocamión, y cada punto se marca como conforme o con anomalía, con foto de evidencia opcional.</figcaption>            </figure>
+            <figure class="pshot">
+              <img src="/proyectos/ctpat-qr/certificado.webp" width="1400" height="684"
+                   loading="lazy" decoding="async" alt="Detalle de la inspección número 36 en estado confirmado, con los diecisiete puntos de control aprobados y el certificado con código QR de verificación." data-i18n-alt="c.shot3Alt" />
+              <figcaption class="pshot__cap" data-i18n="c.shot3Cap">Inspección confirmada: los 17 puntos de control aprobados y el certificado con su código QR, generado al aprobar y respaldado por el contrato inteligente.</figcaption>            </figure>
+            <figure class="pshot">
+              <img src="/proyectos/ctpat-qr/dashboard.webp" width="1400" height="684"
+                   loading="lazy" decoding="async" alt="Panel de control de CTPAT-QR con el total de inspecciones, pendientes, alertas críticas, la gráfica de estatus global y la actividad reciente." data-i18n-alt="c.shot4Alt" />
+              <figcaption class="pshot__cap" data-i18n="c.shot4Cap">Panel de control: totales de inspecciones, pendientes y alertas, estatus global y actividad reciente. Arriba a la derecha, la dirección del contrato inteligente que respalda los registros.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <nav class="pnav" aria-label="Otros casos">
+          <a class="pnav__link pnav__link--prev" href="/proyectos/urbabus/">
+            <span class="pnav__dir" data-i18n="pr.prev">Caso anterior</span>
+            <span class="pnav__name" data-i18n="u.name">Urbabus</span>
+          </a>
+          <a class="pnav__link pnav__link--next" href="/proyectos/soia/">
+            <span class="pnav__dir" data-i18n="pr.next">Caso siguiente</span>
+            <span class="pnav__name" data-i18n="s.name">SOIA</span>
+          </a>
+        </nav>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="section section--cta">
+      <div class="container">
+        <div class="case-cta reveal">
+          <p class="section__label" data-i18n="contact.label">Contacto</p>
+          <h2 class="cta__title title-reveal">
+            <span class="line"><span class="line__inner line__inner--scroll" data-i18n="pr.ctaT">¿Tiene una operación parecida?</span></span>
+          </h2>
+          <p class="cta__text" data-i18n="pr.ctaText">Si su empresa enfrenta un problema similar, cuéntenos. La primera conversación es para entender su operación, no para venderle nada.</p>
+          <a href="/#contacto" class="btn btn--primary case-cta__btn" data-i18n="nav.cta">Agendar una reunión</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__brand" aria-hidden="true">Vertex Core</p>
+      <div class="footer__row">
+        <nav class="footer__links" aria-label="Enlaces del pie de página">
+          <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+          <a href="/proyectos/" data-i18n="nav.projects">Proyectos</a>
+          <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+          <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+          <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+        </nav>
+        <p class="footer__copy" data-i18n="footer.copy">© 2026 Vertex Core. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

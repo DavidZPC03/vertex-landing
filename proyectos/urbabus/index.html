@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-theme="dark" data-title-key="u.metaTitle" data-desc-key="u.metaDesc">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica el tema guardado antes de pintar (evita parpadeo) -->
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem("vc-theme") || "dark";
+  </script>
+
+  <!-- SEO básico -->
+  <title>Urbabus — Rastreo GPS en vivo para transporte urbano | Vertex Core</title>
+  <meta name="description" id="metaDesc" content="Caso Urbabus: mapa público de rutas con posición en vivo, integración con dos proveedores GPS y un diagnóstico en producción que llevó el reporte de las unidades de 65 minutos a 30 segundos." />
+  <link rel="canonical" href="https://vertex-core.net/proyectos/urbabus/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://vertex-core.net/proyectos/urbabus/" />
+  <meta property="og:title" content="Urbabus — Rastreo GPS en vivo para transporte urbano | Vertex Core" />
+  <meta property="og:description" content="Caso Urbabus: mapa público de rutas con posición en vivo, integración con dos proveedores GPS y un diagnóstico en producción que llevó el reporte de las unidades de 65 minutos a 30 segundos." />
+  <meta property="og:image" content="https://vertex-core.net/og-image.png" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Urbabus — Rastreo GPS en vivo para transporte urbano | Vertex Core" />
+  <meta name="twitter:description" content="Caso Urbabus: mapa público de rutas con posición en vivo, integración con dos proveedores GPS y un diagnóstico en producción que llevó el reporte de las unidades de 65 minutos a 30 segundos." />
+  <meta name="twitter:image" content="https://vertex-core.net/og-image.png" />
+
+  <!-- Migas de pan para buscadores (schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://vertex-core.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Proyectos",
+        "item": "https://vertex-core.net/proyectos/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Urbabus"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon: logo de Vertex Core -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Tipografía: Inter desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- Velo superior: desvanece (blur progresivo) el contenido que pasa bajo la nav -->
+  <div class="nav-fade" id="navFade" aria-hidden="true"></div>
+
+  <!-- ============ NAVEGACIÓN FLOTANTE ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Vertex Core — inicio">
+        <img src="/logo-128.png" alt="" class="nav__logo-mark" width="30" height="30" />
+        <span class="nav__logo-text">Vertex Core</span>
+      </a>
+
+      <div class="nav__right">
+        <nav class="nav__links" aria-label="Navegación principal">
+          <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+          <a href="/proyectos/" class="is-active" aria-current="page" data-i18n="nav.projects">Proyectos</a>
+          <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+          <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+          <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+        </nav>
+
+        <!-- Toggle de idioma -->
+        <button class="icon-btn icon-btn--lang" id="langToggle" aria-label="Switch to English">EN</button>
+
+        <!-- Toggle de tema claro/oscuro -->
+        <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+        </button>
+
+        <a href="/#contacto" class="btn btn--primary btn--sm nav__cta" data-i18n="nav.cta">Agendar una reunión</a>
+      </div>
+
+      <!-- Botón menú móvil -->
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div class="nav__mobile" id="navMobile">
+      <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="/proyectos/" class="is-active" aria-current="page" data-i18n="nav.projects">Proyectos</a>
+      <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+      <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+      <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+      <a href="/#contacto" class="btn btn--primary" data-i18n="nav.cta">Agendar una reunión</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ ENCABEZADO DEL CASO ============ -->
+    <section class="section section--case-head">
+      <div class="container">
+        <nav class="crumb" aria-label="Ruta de navegación">
+          <a href="/" data-i18n="bc.home">Inicio</a>
+          <span class="crumb__sep" aria-hidden="true">›</span>
+          <a href="/proyectos/" data-i18n="bc.projects">Proyectos</a>
+          <span class="crumb__sep" aria-hidden="true">›</span>
+          <span class="crumb__current" data-i18n="u.name">Urbabus</span>
+        </nav>
+
+        <p class="section__label" data-i18n="u.tag">Cliente · En producción</p>
+        <h1 class="case__title title-reveal">
+          <span class="line"><span class="line__inner line__inner--scroll" data-i18n="u.name">Urbabus</span></span>
+        </h1>
+        <p class="case__summary reveal" data-i18n="u.summary">Mapa público de rutas con la posición de las unidades en vivo, para que el pasajero sepa cuándo pasa su camión.</p>
+
+        <dl class="pmeta reveal">
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mClient">Cliente</dt>
+            <dd class="pmeta__v" data-i18n="u.vClient">Urbabus — transporte urbano en Nuevo Laredo</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mType">Tipo</dt>
+            <dd class="pmeta__v" data-i18n="u.vType">Plataforma web y rastreo de flota</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mStatus">Estado</dt>
+            <dd class="pmeta__v" data-i18n="u.vStatus">En producción</dd>
+          </div>
+          <div class="pmeta__item">
+            <dt class="pmeta__k" data-i18n="pr.mRole">Rol de Vertex</dt>
+            <dd class="pmeta__v" data-i18n="u.vRole">Desarrollo y operación de la plataforma</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CUERPO DEL CASO ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="case-body">
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.challengeT">El reto</h2>
+          <p class="pblock__text" data-i18n="u.challengeP">El pasajero no tenía forma de saber cuándo iba a pasar su camión: esperaba en la parada sin información. Del lado del operador tampoco había visibilidad de la flota, así que no se podía responder un reclamo ni verificar si una unidad estaba realmente en ruta.</p>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.builtT">Qué construimos</h2>
+          <ul class="card__list pblock__list">
+          <li data-i18n="u.b1">Mapa público de rutas con la posición de cada unidad en vivo, abierto a cualquier pasajero desde el navegador.</li>
+          <li data-i18n="u.b2">Backend de sincronización GPS que funciona como único consumidor de los proveedores, en lugar de que cada visitante consulte por su cuenta.</li>
+          <li data-i18n="u.b3">Indicador de conexión de cuatro estados que distingue si el equipo transmitió de si el equipo realmente supo dónde estaba.</li>
+          <li data-i18n="u.b4">Integración con dos proveedores GPS, Traccar y Flespi, sobre equipos ST-906L con SIM Telcel.</li>
+          <li data-i18n="u.b5">Panel interno de unidades y rutas para el operador.</li>
+          </ul>
+
+          <!-- Figura 1: arquitectura de sincronización GPS, antes y después -->
+          <figure class="pfig pfig--pair">
+            <div class="pfig__panel">
+              <p class="pfig__label" data-i18n="pr.before">Antes</p>
+              <svg class="pfig__svg" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="u1a-t">
+                <title id="u1a-t" data-i18n="u.fig1aAlt">Esquema: cada visitante consultaba directamente a los proveedores GPS, una petición por unidad</title>
+
+                <!-- Navegadores de los visitantes -->
+                <rect x="16" y="54" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="16" y="118" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="16" y="182" width="92" height="38" rx="8" class="pfig-box" />
+                <text x="62" y="78" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+                <text x="62" y="142" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+                <text x="62" y="206" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+
+                <!-- Proveedores GPS -->
+                <rect x="312" y="86" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="312" y="170" width="92" height="38" rx="8" class="pfig-box" />
+                <text x="358" y="110" class="pfig-t" text-anchor="middle">Traccar</text>
+                <text x="358" y="194" class="pfig-t" text-anchor="middle">Flespi</text>
+
+                <!-- Seis conexiones: la maraña es justamente el problema -->
+                <line x1="108" y1="73" x2="312" y2="105" class="pfig-line" />
+                <line x1="108" y1="73" x2="312" y2="189" class="pfig-line" />
+                <line x1="108" y1="137" x2="312" y2="105" class="pfig-line" />
+                <line x1="108" y1="137" x2="312" y2="189" class="pfig-line" />
+                <line x1="108" y1="201" x2="312" y2="105" class="pfig-line" />
+                <line x1="108" y1="201" x2="312" y2="189" class="pfig-line" />
+
+                <text x="210" y="262" class="pfig-note" text-anchor="middle" data-i18n="u.fig1aN1">Una petición por unidad, desde cada navegador</text>
+                <text x="210" y="282" class="pfig-note pfig-note--warn" text-anchor="middle" data-i18n="u.fig1aN2">La carga crece con la audiencia</text>
+              </svg>
+            </div>
+
+            <div class="pfig__panel">
+              <p class="pfig__label" data-i18n="pr.after">Después</p>
+              <svg class="pfig__svg" viewBox="0 0 420 300" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="u1b-t">
+                <title id="u1b-t" data-i18n="u.fig1bAlt">Esquema: los visitantes hacen una sola petición al backend de Vertex, que es el único que consulta a los proveedores GPS</title>
+
+                <rect x="16" y="54" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="16" y="118" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="16" y="182" width="92" height="38" rx="8" class="pfig-box" />
+                <text x="62" y="78" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+                <text x="62" y="142" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+                <text x="62" y="206" class="pfig-t" text-anchor="middle" data-i18n="u.figVisitor">Visitante</text>
+
+                <!-- El backend concentra: único consumidor de los proveedores -->
+                <rect x="170" y="120" width="100" height="54" rx="10" class="pfig-box pfig-box--accent" />
+                <text x="220" y="142" class="pfig-t pfig-t--strong" text-anchor="middle" data-i18n="u.fig1bBk1">Backend</text>
+                <text x="220" y="159" class="pfig-t" text-anchor="middle" data-i18n="u.fig1bBk2">de Vertex</text>
+
+                <rect x="312" y="86" width="92" height="38" rx="8" class="pfig-box" />
+                <rect x="312" y="170" width="92" height="38" rx="8" class="pfig-box" />
+                <text x="358" y="110" class="pfig-t" text-anchor="middle">Traccar</text>
+                <text x="358" y="194" class="pfig-t" text-anchor="middle">Flespi</text>
+
+                <line x1="108" y1="73" x2="170" y2="147" class="pfig-line" />
+                <line x1="108" y1="137" x2="170" y2="147" class="pfig-line" />
+                <line x1="108" y1="201" x2="170" y2="147" class="pfig-line" />
+                <line x1="270" y1="147" x2="312" y2="105" class="pfig-line pfig-line--accent" />
+                <line x1="270" y1="147" x2="312" y2="189" class="pfig-line pfig-line--accent" />
+
+                <text x="210" y="262" class="pfig-note" text-anchor="middle" data-i18n="u.fig1bN1">Una sola petición agrupada</text>
+                <text x="210" y="282" class="pfig-note pfig-note--ok" text-anchor="middle" data-i18n="u.fig1bN2">La carga ya no depende de la audiencia</text>
+              </svg>
+            </div>
+
+            <figcaption class="pfig__cap" data-i18n="u.fig1Cap">Antes, cada navegador consultaba a los proveedores GPS por su cuenta y hacía una petición por unidad. Ahora el backend es el único consumidor y el mapa recibe todo en una sola respuesta.</figcaption>
+          </figure>
+
+          <!-- Figura 2: los cuatro estados del indicador de conexión -->
+          <figure class="pfig">
+            <svg class="pfig__svg pfig__svg--states" viewBox="0 0 420 262" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="u2-t">
+              <title id="u2-t" data-i18n="u.fig2Alt">Leyenda de los cuatro estados de conexión de una unidad</title>
+
+              <circle cx="24" cy="34" r="7" class="pfig-dot pfig-dot--on" />
+              <text x="48" y="32" class="pfig-t pfig-t--strong" data-i18n="u.fig2s1">En línea</text>
+              <text x="48" y="50" class="pfig-note" data-i18n="u.fig2s1d">Transmite y sabe dónde está</text>
+
+              <circle cx="24" cy="98" r="7" class="pfig-dot pfig-dot--wait" />
+              <text x="48" y="96" class="pfig-t pfig-t--strong" data-i18n="u.fig2s2">Retrasado</text>
+              <text x="48" y="114" class="pfig-note" data-i18n="u.fig2s2d">Transmite, pero con demora</text>
+
+              <circle cx="24" cy="162" r="7" class="pfig-dot pfig-dot--nofix" />
+              <text x="48" y="160" class="pfig-t pfig-t--strong" data-i18n="u.fig2s3">Sin señal GPS</text>
+              <text x="48" y="178" class="pfig-note" data-i18n="u.fig2s3d">Transmite, pero sin fijar posición</text>
+
+              <circle cx="24" cy="226" r="7" class="pfig-dot pfig-dot--off" />
+              <text x="48" y="224" class="pfig-t pfig-t--strong" data-i18n="u.fig2s4">Fuera de línea</text>
+              <text x="48" y="242" class="pfig-note" data-i18n="u.fig2s4d">No transmite</text>
+            </svg>
+            <figcaption class="pfig__cap" data-i18n="u.fig2Cap">El indicador separa dos cosas que antes se confundían: que el equipo haya transmitido y que el equipo haya sabido dónde estaba. Un equipo sin señal satelital ya no se reporta como si estuviera bien.</figcaption>
+          </figure>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.resultsT">Resultados medidos</h2>
+          <div class="presults">
+            <article class="presult">
+              <h3 class="presult__h" data-i18n="u.r1">De 65 minutos a 30 segundos entre reportes</h3>
+              <p class="presult__p" data-i18n="u.r1d">El equipo de una unidad reportaba cada 65.5 minutos en promedio. Se diagnosticó el modo de suspensión del dispositivo con una medición A/B en producción y, una vez corregido, pasó a reportar cada 30 segundos.</p>
+            </article>
+            <article class="presult">
+              <h3 class="presult__h" data-i18n="u.r2">La carga dejó de crecer con la audiencia</h3>
+              <p class="presult__p" data-i18n="u.r2d">El mapa hacía una petición por unidad desde cada navegador. Se reemplazó por una sola petición agrupada al backend, así que la carga ya no aumenta con la cantidad de personas mirando el mapa.</p>
+            </article>
+            <article class="presult">
+              <h3 class="presult__h" data-i18n="u.r3">Velocidad corregida</h3>
+              <p class="presult__p" data-i18n="u.r3d">La API entregaba la velocidad en nudos y el mapa la mostraba con la etiqueta km/h. Se corrigió la conversión en ambos extremos.</p>
+            </article>
+            <article class="presult">
+              <h3 class="presult__h" data-i18n="u.r4">Caída de 8 h 34 min documentada y cerrada</h3>
+              <p class="presult__p" data-i18n="u.r4d">Se realizó el análisis posterior de una caída del servicio: agotamiento de memoria de la máquina virtual de Java en una instancia de 1 GB sin espacio de intercambio. Se corrigió el dimensionamiento y se agregó monitoreo para detectarlo antes.</p>
+            </article>
+          </div>
+
+          <!-- Figura 3: intervalo entre reportes GPS, a escala proporcional -->
+          <figure class="pfig">
+            <svg class="pfig__svg pfig__svg--bars" viewBox="0 0 420 226" preserveAspectRatio="xMidYMid meet" width="100%" height="auto" role="img" aria-labelledby="u3-t">
+              <title id="u3-t" data-i18n="u.fig3Alt">Comparación a escala del intervalo entre reportes GPS: antes 65.5 minutos, después 30 segundos</title>
+
+              <text x="16" y="26" class="pfig-note" data-i18n="pr.before">Antes</text>
+              <rect x="16" y="36" width="388" height="28" rx="6" class="pfig-bar pfig-bar--before" />
+              <text x="28" y="55" class="pfig-t pfig-t--strong" data-i18n="u.fig3BeforeV">≈ 65.5 min entre reportes</text>
+
+              <text x="16" y="102" class="pfig-note" data-i18n="pr.after">Después</text>
+              <!-- 3 px sobre 388 es la proporción real de 30 s frente a 65.5 min -->
+              <rect x="16" y="112" width="3" height="28" rx="1.5" class="pfig-bar pfig-bar--after" />
+              <text x="30" y="131" class="pfig-t pfig-t--strong" data-i18n="u.fig3AfterV">30 s</text>
+
+              <line x1="16" y1="170" x2="404" y2="170" class="pfig-rule" />
+              <text x="16" y="190" class="pfig-note" data-i18n="u.fig3Note">Medición A/B en producción. Barras a escala real:</text>
+              <text x="16" y="208" class="pfig-note" data-i18n="u.fig3Note2">30 s es 1/131 del intervalo anterior.</text>
+            </svg>
+            <figcaption class="pfig__cap" data-i18n="u.fig3Cap">El equipo entraba en modo de suspensión y dejaba de reportar. Una vez corregido, el intervalo entre reportes cayó dos órdenes de magnitud.</figcaption>
+          </figure>
+        </div>
+
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.stackT">Stack técnico</h2>
+          <ul class="chips">
+            <li class="chip">TypeScript</li>
+            <li class="chip">Node.js</li>
+            <li class="chip">Express</li>
+            <li class="chip">Prisma</li>
+            <li class="chip">PostgreSQL</li>
+            <li class="chip">Render</li>
+            <li class="chip">Google Cloud</li>
+            <li class="chip">Docker</li>
+            <li class="chip">Traccar</li>
+            <li class="chip">Flespi</li>
+            <li class="chip">Leaflet</li>
+          </ul>
+        </div>
+
+        <!-- Capturas del sistema real en producción (no son mockups) -->
+        <div class="pblock reveal">
+          <h2 class="pblock__title" data-i18n="pr.shotsT">El sistema en operación</h2>
+          <div class="pshots">
+            <figure class="pshot">
+              <img src="/proyectos/urbabus/ruta-en-vivo.webp" width="1600" height="1222"
+                   loading="lazy" decoding="async" alt="Página pública de la Ruta TEC de Urbabus: el trazo de la ruta sobre el mapa de Nuevo Laredo con sus paradas numeradas, el desglose de tramos con distancia y tiempo, y el panel de unidades activas." data-i18n-alt="u.shot1Alt" />
+              <figcaption class="pshot__cap" data-i18n="u.shot1Cap">Ruta TEC en el sitio público: el trazo con sus paradas numeradas, la distancia y el tiempo de cada tramo, y el panel de unidades activas donde cada proveedor GPS reporta su propio estado de conexión.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <nav class="pnav" aria-label="Otros casos">
+          <a class="pnav__link pnav__link--prev" href="/proyectos/soia/">
+            <span class="pnav__dir" data-i18n="pr.prev">Caso anterior</span>
+            <span class="pnav__name" data-i18n="s.name">SOIA</span>
+          </a>
+          <a class="pnav__link pnav__link--next" href="/proyectos/ctpat-qr/">
+            <span class="pnav__dir" data-i18n="pr.next">Caso siguiente</span>
+            <span class="pnav__name" data-i18n="c.name">CTPAT-QR</span>
+          </a>
+        </nav>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="section section--cta">
+      <div class="container">
+        <div class="case-cta reveal">
+          <p class="section__label" data-i18n="contact.label">Contacto</p>
+          <h2 class="cta__title title-reveal">
+            <span class="line"><span class="line__inner line__inner--scroll" data-i18n="pr.ctaT">¿Tiene una operación parecida?</span></span>
+          </h2>
+          <p class="cta__text" data-i18n="pr.ctaText">Si su empresa enfrenta un problema similar, cuéntenos. La primera conversación es para entender su operación, no para venderle nada.</p>
+          <a href="/#contacto" class="btn btn--primary case-cta__btn" data-i18n="nav.cta">Agendar una reunión</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__brand" aria-hidden="true">Vertex Core</p>
+      <div class="footer__row">
+        <nav class="footer__links" aria-label="Enlaces del pie de página">
+          <a href="/#servicios" data-i18n="nav.services">Servicios</a>
+          <a href="/proyectos/" data-i18n="nav.projects">Proyectos</a>
+          <a href="/#proceso" data-i18n="nav.process">Proceso</a>
+          <a href="/#nosotros" data-i18n="nav.about">Nosotros</a>
+          <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
+        </nav>
+        <p class="footer__copy" data-i18n="footer.copy">© 2026 Vertex Core. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
