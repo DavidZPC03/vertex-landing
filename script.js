@@ -752,7 +752,7 @@ if (finePointer) {
 // IMPORTANTE: la primera vez que se use, FormSubmit enviará un correo de
 // activación a CONTACT_EMAIL; hay que confirmarlo para que lleguen los mensajes.
 // Respaldo: si el envío falla, se abre el cliente de correo con los datos.
-const CONTACT_EMAIL = "contacto@vertexcore.mx"; // TODO: correo definitivo (Zoho Mail)
+const CONTACT_EMAIL = "contacto@vertex-core.net";
 
 const form = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
