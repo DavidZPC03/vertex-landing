@@ -73,7 +73,7 @@
       <div class="nav__right">
         <nav class="nav__links" aria-label="Navegación principal">
           <a href="#servicios" data-i18n="nav.services">Servicios</a>
-          <a href="/proyectos/" data-i18n="nav.projects">Proyectos</a>
+          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
           <a href="#proceso" data-i18n="nav.process">Proceso</a>
           <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
           <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -101,7 +101,7 @@
     <!-- Menú móvil desplegable -->
     <div class="nav__mobile" id="navMobile">
       <a href="#servicios" data-i18n="nav.services">Servicios</a>
-      <a href="/proyectos/" data-i18n="nav.projects">Proyectos</a>
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
       <a href="#proceso" data-i18n="nav.process">Proceso</a>
       <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -251,6 +251,74 @@
             </ul>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS (vista previa) ============ -->
+    <section class="section" id="proyectos">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__label" data-i18n="pl.label">Proyectos</p>
+          <h2 class="section__title title-reveal">
+            <span class="line"><span class="line__inner line__inner--scroll" data-i18n="pl.title">Trabajo entregado, no promesas</span></span>
+          </h2>
+          <p class="section__text reveal" data-i18n="pl.text">Cada caso incluye su contexto real: si fue para un cliente en operación, para una competencia o si se trata de un producto propio. Preferimos mostrar poco y que sea verificable.</p>
+        </div>
+
+        <div class="grid grid--projects">
+          <article class="card pcard reveal">
+            <span class="card__number">01</span>
+            <p class="pcard__tag" data-i18n="u.tag">Cliente · En producción</p>
+            <h3 class="card__title" data-i18n="u.name">Urbabus</h3>
+            <p class="card__text" data-i18n="u.summary">Mapa público de rutas con la posición de las unidades en vivo, para que el pasajero sepa cuándo pasa su camión.</p>
+            <ul class="chips chips--sm">
+                <li class="chip">TypeScript</li>
+                <li class="chip">Express</li>
+                <li class="chip">PostgreSQL</li>
+                <li class="chip">Traccar</li>
+            </ul>
+            <a class="pcard__link" href="/proyectos/urbabus/">
+              <span data-i18n="pl.view">Ver caso</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+
+          <article class="card pcard reveal">
+            <span class="card__number">02</span>
+            <p class="pcard__tag" data-i18n="c.tag">Proyecto de competencia · InnovaTec</p>
+            <h3 class="card__title" data-i18n="c.name">CTPAT-QR</h3>
+            <p class="card__text" data-i18n="c.summary">Plataforma de inspecciones CTPAT con códigos QR, visor 3D del camión y registro no alterable de cada revisión.</p>
+            <ul class="chips chips--sm">
+                <li class="chip">Next.js</li>
+                <li class="chip">Express</li>
+                <li class="chip">PostgreSQL</li>
+                <li class="chip">Stripe</li>
+            </ul>
+            <a class="pcard__link" href="/proyectos/ctpat-qr/">
+              <span data-i18n="pl.view">Ver caso</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+
+          <article class="card pcard reveal">
+            <span class="card__number">03</span>
+            <p class="pcard__tag" data-i18n="s.tag">Producto propio · MVP</p>
+            <h3 class="card__title" data-i18n="s.name">SOIA</h3>
+            <p class="card__text" data-i18n="s.summary">Portal multi-tenant para agencias aduanales: seguimiento de pedimentos y sus eventos en un solo lugar.</p>
+            <ul class="chips chips--sm">
+                <li class="chip">Next.js</li>
+                <li class="chip">Prisma</li>
+                <li class="chip">PostgreSQL</li>
+                <li class="chip">Auth.js</li>
+            </ul>
+            <a class="pcard__link" href="/proyectos/soia/">
+              <span data-i18n="pl.view">Ver caso</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+        </div>
+
+        <a href="/proyectos/" class="btn btn--secondary" style="margin-top: 32px;" data-i18n="pl.viewAll">Ver todos los proyectos</a>
       </div>
     </section>
 
@@ -438,7 +506,7 @@
       <div class="footer__row">
         <nav class="footer__links" aria-label="Enlaces del pie de página">
           <a href="#servicios" data-i18n="nav.services">Servicios</a>
-          <a href="/proyectos/" data-i18n="nav.projects">Proyectos</a>
+          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
           <a href="#proceso" data-i18n="nav.process">Proceso</a>
           <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
           <a href="#faq" data-i18n="nav.faq">FAQ</a>

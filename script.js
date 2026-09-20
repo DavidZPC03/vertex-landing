@@ -117,6 +117,7 @@ const i18n = {
     "pl.text": "Cada caso incluye su contexto real: si fue para un cliente en operación, para una competencia o si se trata de un producto propio. Preferimos mostrar poco y que sea verificable.",
     "pl.view": "Ver caso",
     "pl.note": "Parte de nuestro trabajo está bajo acuerdo de confidencialidad y no puede publicarse. Con gusto lo comentamos en una llamada.",
+    "pl.viewAll": "Ver todos los proyectos",
 
     /* ---- Encabezados compartidos de las páginas de proyecto ---- */
     "pr.mClient": "Cliente",
@@ -379,6 +380,7 @@ const i18n = {
     "pl.text": "Every case states its real context: whether it was built for a client in production, for a competition, or as one of our own products. We would rather show less and have it hold up to scrutiny.",
     "pl.view": "View case",
     "pl.note": "Part of our work is covered by confidentiality agreements and cannot be published. We are happy to walk you through it on a call.",
+    "pl.viewAll": "View all projects",
 
     /* ---- Encabezados compartidos de las páginas de proyecto ---- */
     "pr.mClient": "Client",
